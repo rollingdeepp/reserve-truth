@@ -1,0 +1,408 @@
+/* RESERVE TRUTH — editorial proof-of-reserves filing (SEC 10-K vibe).
+   Single centered 720px column on parchment, left folio rail for page numbers
+   and timestamps, 1px hairlines, NO gradients, NO shadows. Playfair Display
+   masthead over Source Sans 3 body with Source Code Pro tabular numerals.
+   Signature: a VERTICAL SNAPSHOT LADDER of horizontal rungs with colored drift
+   arrows revealed on scroll, plus a horizontal d3 risk gauge.
+   Deliberately unlike the dark teal air-quality console, the cream/blue
+   buyback-verify wave site, and the warm wheat grain-spoilage bins. */
+
+:root {
+  --ink: #0B1733;
+  --paper: #F4ECD8;
+  --navy: #1E2F5C;
+  --rust: #C44A2F;
+  --olive: #5C7C3F;
+  --amber: #B7892F;
+  --line: #0B1733;
+  --mut: #6b6353;
+  --paper2: #efe5cc;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; min-height: 100%; }
+body {
+  font-family: "Source Sans 3", -apple-system, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+}
+button { cursor: pointer; font-family: inherit; color: inherit; }
+button:disabled { cursor: not-allowed; opacity: 0.4; }
+a { color: var(--navy); }
+.mono { font-family: "Source Code Pro", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+.break { overflow-wrap: anywhere; word-break: break-word; }
+
+/* ── filing column ──────────────────────────────────────────────────────── */
+.filing {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 160px;
+}
+.rule { height: 0; border: 0; border-top: 1px solid var(--line); margin: 0; }
+.rule.top { border-top-width: 3px; margin-bottom: 0; }
+
+.sheet {
+  position: relative;
+  padding: 96px 0 40px;
+  border-bottom: 1px solid rgba(11, 23, 51, 0.25);
+}
+.sheet.masthead { padding-top: 56px; border-bottom: 2px solid var(--line); }
+.sheet.foot { border-bottom: 0; padding-bottom: 40px; }
+
+/* left folio rail */
+.folio {
+  position: absolute;
+  left: -116px;
+  top: 100px;
+  width: 96px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.folio .pno {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.folio .ts { font-size: 9px; letter-spacing: 0.14em; color: var(--mut); text-transform: uppercase; }
+
+/* ── masthead ───────────────────────────────────────────────────────────── */
+.mast-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 30px;
+}
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+.title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(52px, 11vw, 104px);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  margin: 0 0 26px;
+  color: var(--ink);
+}
+.standfirst {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #2c3550;
+  max-width: 58ch;
+  margin: 0 0 32px;
+  border-left: 3px solid var(--olive);
+  padding-left: 18px;
+}
+.standfirst.sm { font-size: 14px; margin-bottom: 22px; border-left-color: var(--navy); }
+
+.colophon { margin: 0; display: flex; flex-direction: column; gap: 0; }
+.colophon > div {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(11, 23, 51, 0.18);
+}
+.colophon dt {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mut);
+  padding-top: 2px;
+}
+.colophon dd { margin: 0; font-size: 13px; color: var(--ink); }
+
+/* ── headings ──────────────────────────────────────────────────────────── */
+.part {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+  margin: 0 0 24px;
+  color: var(--ink);
+}
+
+/* ── registry ledger lines ─────────────────────────────────────────────── */
+.ledgerline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px dotted rgba(11, 23, 51, 0.35);
+}
+.ledgerline span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mut); }
+.ledgerline b { font-size: 18px; font-weight: 600; color: var(--ink); }
+
+/* ── forms / controls ──────────────────────────────────────────────────── */
+.form { margin-top: 28px; }
+.control { margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(11, 23, 51, 0.18); }
+.control:first-of-type { border-top: 0; }
+.control h4 {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px;
+  color: var(--navy);
+}
+.control.admin { border-top: 1px solid var(--line); }
+
+label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mut);
+  margin: 0 0 6px;
+}
+input {
+  width: 100%;
+  font-family: "Source Code Pro", monospace;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--paper2);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 10px 12px;
+  outline: none;
+}
+input:focus { background: #fff; box-shadow: inset 0 -2px 0 var(--olive); }
+input::placeholder { color: #9a917c; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.grid2 .span2 { grid-column: 1 / -1; }
+.inline { display: flex; gap: 10px; align-items: stretch; margin-bottom: 10px; }
+.inline input { flex: 1; }
+
+.seal {
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 10px 22px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.seal:hover:not(:disabled) { background: var(--navy); border-color: var(--navy); }
+.seal.alt { background: var(--rust); border-color: var(--rust); }
+.seal.alt:hover:not(:disabled) { background: #a83c24; }
+.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.ghost:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+
+.ref {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rust);
+  color: var(--rust);
+  padding: 0 2px;
+  margin: 0 4px;
+  font-family: "Source Code Pro", monospace;
+  font-size: 12px;
+}
+.ref:hover { background: var(--rust); color: var(--paper); }
+.micro { font-size: 12px; color: var(--mut); margin: 14px 0 0; line-height: 1.7; }
+
+/* ── account tabs ──────────────────────────────────────────────────────── */
+.accbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--paper2);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 7px 12px;
+  font-size: 13px;
+}
+.tab.on { background: var(--ink); color: var(--paper); }
+.tab .dot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid rgba(11,23,51,0.5); }
+
+.acchead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 20px;
+}
+.accname { font-family: "Playfair Display", serif; font-weight: 700; font-size: 22px; margin: 0 0 4px; }
+.custodian { font-size: 12px; color: var(--mut); }
+.verdict {
+  font-family: "Source Code Pro", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+/* verdict / status color keys */
+.healthy { background: rgba(92,124,63,0.16); color: var(--olive); border-color: var(--olive); }
+.drifting { background: rgba(183,137,47,0.16); color: var(--amber); border-color: var(--amber); }
+.atrisk { background: rgba(196,74,47,0.16); color: var(--rust); border-color: var(--rust); }
+.insolvent { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.dot.healthy { background: var(--olive); } .dot.drifting { background: var(--amber); }
+.dot.atrisk { background: var(--rust); } .dot.insolvent { background: var(--ink); }
+
+/* ── key/value grids ───────────────────────────────────────────────────── */
+.kvgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; margin: 0 0 8px; }
+.kvgrid.consts { grid-template-columns: 1fr 1fr; }
+.kv {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(11, 23, 51, 0.14);
+}
+.kv.wide { grid-column: 1 / -1; }
+.kv span { font-size: 11px; letter-spacing: 0.06em; color: var(--mut); text-transform: uppercase; }
+.kv b { font-size: 13px; font-weight: 600; color: var(--ink); text-align: right; }
+.kv b.danger { color: var(--rust); }
+
+/* ── the snapshot ladder (signature) ───────────────────────────────────── */
+.ladder { margin-top: 26px; }
+.rung {
+  display: grid;
+  grid-template-columns: 52px 1fr 1fr 64px 48px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: var(--paper2);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 14px 16px;
+  position: relative;
+}
+.rung:hover { background: #fff; }
+.rung .r-id {
+  position: absolute;
+  right: -2px;
+  top: -10px;
+  font-size: 9px;
+  color: var(--mut);
+  background: var(--paper);
+  padding: 0 4px;
+}
+.rung.head {
+  background: transparent;
+  border: 0;
+  border-bottom: 1.5px solid var(--line);
+  padding: 4px 16px 8px;
+  pointer-events: none;
+}
+.rung.head span { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mut); }
+.rung.scored { border-left: 4px solid var(--olive); }
+.rung.pending { border-left: 4px solid var(--amber); border-style: dashed; }
+.rung.disputed { border-left: 4px solid var(--rust); }
+.rung.flag { background: rgba(196,74,47,0.08); }
+.rung .r-res, .rung .r-lia { font-size: 12px; overflow: hidden; text-overflow: ellipsis; }
+.rung .r-ep { font-weight: 700; }
+.rung .r-rat { font-size: 13px; font-weight: 600; }
+.rung .r-dft { font-size: 13px; text-align: right; color: var(--navy); }
+
+/* drift arrows between rungs */
+.drift {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0 6px 16px;
+  margin-left: 18px;
+  border-left: 2px dotted rgba(11,23,51,0.4);
+}
+.drift .darrow { font-size: 16px; line-height: 1; }
+.drift .dlabel { font-size: 10.5px; color: var(--mut); }
+.drift.down .darrow { color: var(--rust); }
+.drift.up .darrow { color: var(--olive); }
+.drift.flat .darrow { color: var(--mut); }
+
+/* ── prose blocks (notes, rationale) ───────────────────────────────────── */
+.prose {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #2c3550;
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  background: var(--paper2);
+  border: 1px solid rgba(11,23,51,0.2);
+}
+.prose .lbl {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 7px;
+  font-family: "Source Code Pro", monospace;
+}
+
+/* ── risk gauge ────────────────────────────────────────────────────────── */
+.gauge { display: block; width: 100%; height: auto; margin: 8px 0 16px; }
+.vlegend { display: flex; flex-wrap: wrap; gap: 8px; }
+.vchip {
+  font-family: "Source Code Pro", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 5px 11px;
+  border: 1px solid var(--line);
+}
+
+/* ── footer + toast ────────────────────────────────────────────────────── */
+.foot .rule { margin-bottom: 16px; }
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 12px;
+  padding: 11px 20px;
+  border-radius: 0;
+  z-index: 60;
+  max-width: 90vw;
+  border: 1px solid var(--olive);
+}
+
+/* ── responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 920px) {
+  .folio { position: static; width: auto; text-align: left; flex-direction: row; gap: 12px; margin-bottom: 14px; align-items: baseline; }
+  .sheet { padding-top: 56px; }
+}
+@media (max-width: 600px) {
+  .grid2 { grid-template-columns: 1fr; }
+  .kvgrid { grid-template-columns: 1fr; }
+  .colophon > div { grid-template-columns: 1fr; gap: 4px; }
+  .rung { grid-template-columns: 40px 1fr 60px 40px; }
+  .rung .r-lia { display: none; }
+}
+:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: .001ms !important; transition: none !important; } }
